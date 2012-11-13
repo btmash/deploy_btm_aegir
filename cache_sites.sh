@@ -21,8 +21,6 @@ for file in ${ALIASES[@]}; do
   sitename=$(basename "$file")
   sitename=${sitename/.alias.drushrc.php/}
   site_alias="@$sitename"
-  echo "$site_alias"
-  drush $site_alias provision-migrate "$PLATFORM" || exit 1
-  drush @hostmaster hosting-import $site_alias
+  drush $site_alias elc
 done
 
