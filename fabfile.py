@@ -24,6 +24,13 @@ def migrate_drupal_platform(build, platform):
 	run("chmod o+r /path/to/platforms/%s/sites" % (build))
 	run("chmod o+r /path/to/platforms/%s/sites/all" % (build))
 
+def cache_drupal_platform_sites(build, platform):
+	print "===> Migrating platform websites ..."
+	run("rm -f ~/static/cache_sites.sh")
+	put("/var/lib/jenkins/scripts/cache_sites.sh", "~/static/cache_sites.sh")
+	run("bash ~/static/cache_sites.sh '%s' '@platform_%s'" % (platform, build))
+	run("rm -f ~/static/cache_sites.sh")
+
 def replace_robots_txt(build, platform):
 	print "===> REPLACE robots.txt with ignore version"
 	run("rm -rf /path/to/platforms/%s/robots.txt" % (build))

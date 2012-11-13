@@ -43,12 +43,14 @@ TASKS=(
 generate_drupal_platform
 provision_drupal_platform
 migrate_drupal_platform
+cache_drupal_platform_sites
 )
 else
 TASKS=(
 generate_drupal_platform
 provision_drupal_platform
 migrate_drupal_platform
+cache_drupal_platform_sites
 replace_robots_txt
 )
 fi
